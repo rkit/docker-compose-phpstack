@@ -1,4 +1,4 @@
-Docker Container for development: Nginx + PHP-FMP (5.5)
+Docker Container for development
 ========
 
 #### Include:
