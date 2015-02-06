@@ -17,14 +17,19 @@ Docker Container for development
 
 1. Install [Docker](https://www.docker.com/) for Linux or [Boot2Docker](http://boot2docker.io/) for OS X & Windows
 
-2. Run
+2. Pull an image from registry to local machine
    
    ```   
    docker pull rkit/docker-nginx-php
+   ```
+
+3. Run from your working directory 
+
+   ```   
    docker run --name c-app -d -p 8888:80 -v `pwd`:/app rkit/docker-nginx-php
    ```
 
-3. Open [http://192.168.59.103:8888](http://192.168.59.103:8888) (OS X, Windows) or [http://127.0.0.1:8888](http://127.0.0.1:8888) (Linux)
+4. Open [http://192.168.59.103:8888](http://192.168.59.103:8888) (OS X, Windows) or [http://127.0.0.1:8888](http://127.0.0.1:8888) (Linux)
 
 ## Run with MySQL
 
