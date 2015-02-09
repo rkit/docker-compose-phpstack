@@ -10,8 +10,10 @@ Docker Container for development
 - php-mongo
 - php-memcache
 - php-memcached
+- php-imagick
 - php-xhprof
 - php-xdebug
+- imagemagick
 
 ## Install
 
