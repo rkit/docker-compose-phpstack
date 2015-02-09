@@ -14,6 +14,8 @@ Docker Container for development
 - php-xhprof
 - php-xdebug
 - imagemagick
+- node & npm
+- composer
 
 ## Install
 
