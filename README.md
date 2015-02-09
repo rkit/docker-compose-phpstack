@@ -40,7 +40,7 @@ Docker Container for development
 ```
 docker run --name mysql-data -v /var/lib/mysql busybox
 docker run --name mysql -d --volumes-from mysql-data -p 3306:3306 -e MYSQL_ROOT_PASSWORD=fghfgh mysql
-docker run --name app --link mysql:mysql -d -p 8888:80 -v `pwd`:/app rkit/docker-nginx-php
+docker run --name app --link mysql:mysql -d -p 80:80 -v `pwd`:/app rkit/docker-nginx-php
 ```
 
 ## Using nginx with virtual hosts 
