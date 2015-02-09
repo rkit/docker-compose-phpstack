@@ -26,10 +26,10 @@ Docker Container for development
 3. Run from your working directory 
 
    ```   
-   docker run --name c-app -d -p 8888:80 -v `pwd`:/app rkit/docker-nginx-php
+   docker run --name c-app -d -p 80:80 -v `pwd`:/app rkit/docker-nginx-php
    ```
 
-4. Open [http://192.168.59.103:8888](http://192.168.59.103:8888) (OS X, Windows) or [http://127.0.0.1:8888](http://127.0.0.1:8888) (Linux)
+4. Open [http://192.168.59.103](http://192.168.59.103) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
 
 ## Run with MySQL
 

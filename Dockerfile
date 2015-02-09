@@ -30,6 +30,7 @@ RUN apt-get update && \
         mercurial \
         curl \
         nginx \
+        imagemagick \
         mysql-client \
         php5-fpm \
         php5-redis \
@@ -43,6 +44,7 @@ RUN apt-get update && \
         php5-mcrypt \
         php5-mysql \
         php5-xhprof \
+        php5-imagick \
         php5-pgsql \
         php5-xdebug \
         php5-xsl && \

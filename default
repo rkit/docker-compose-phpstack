@@ -4,7 +4,7 @@ server {
 
      root /app;
      index index.php;
-     server_name web;
+     server_name app;
 
      location / {
          try_files $uri $uri/ /index.php?$args;
