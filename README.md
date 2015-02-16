@@ -47,7 +47,7 @@ docker run --name app --link mysql:mysql -d -p 80:80 -v `pwd`:/app rkit/docker-n
 
 ```
 docker run --name app -d -p 80:80 \
-    -v `pwd`:/var/www/cetis \
+    -v `pwd`:/var/www/site \
     -v ~/works/server/nginx/sites-enabled:/etc/nginx/sites-enabled \
     rkit/docker-nginx-php
 ```
