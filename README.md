@@ -16,6 +16,7 @@ Docker Container for development
 - imagemagick
 - node & npm
 - composer
+- codeception
 
 ## Install
 

@@ -4,6 +4,9 @@ MAINTAINER Igor Romanov <rkit.ru@gmail.com>
 # Prepare Debian environment
 ENV DEBIAN_FRONTEND noninteractive
 
+# Initialize application
+WORKDIR /app
+
 # Performance optimization - see https://gist.github.com/jpetazzo/6127116
 # this forces dpkg not to call sync() after package extraction and speeds up install
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup
@@ -19,11 +22,11 @@ RUN echo "deb http://packages.dotdeb.org wheezy-php55 all" >> /etc/apt/sources.l
 RUN echo "deb-src http://packages.dotdeb.org wheezy-php55 all" >> /etc/apt/sources.list.d/dotdeb.list
 
 # Update and install system base packages
-
 RUN apt-get update && \
     apt-get install -y wget && \
     wget http://www.dotdeb.org/dotdeb.gpg -O- |apt-key add -
 
+# Update and install packages
 RUN apt-get update && \
     apt-get install -y \
         git \
@@ -51,19 +54,20 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
-# Install Node & NPM
-RUN curl -sL https://deb.nodesource.com/setup | bash - && apt-get -y install nodejs
+# Install Node/NPM
+RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+    apt-get -y install nodejs
 
-# Initialize application
-WORKDIR /app
-
-# Install composer && global asset plugin
+# Install Composer/Asset-Plugin/Codeception
 ENV COMPOSER_HOME /root/.composer
 ENV PATH /root/.composer/vendor/bin:$PATH
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    /usr/local/bin/composer global require "fxp/composer-asset-plugin:1.0.0"
+    /usr/local/bin/composer global require "fxp/composer-asset-plugin:1.0.0" && \
+    /usr/local/bin/composer global require "codeception/codeception=2.0.*" && \
+    /usr/local/bin/composer global require "codeception/specify=*"  && \
+    /usr/local/bin/composer global require "codeception/verify=*"
 
-# Prepare PHP & Nginx
+# Prepare Server
 ADD default /etc/nginx/sites-available/default
 ADD nginx.conf /etc/nginx/conf.d/
 ADD php.ini /etc/php5/fpm/conf.d/php.ini
