@@ -26,4 +26,4 @@ mysql:
   volumes_from:
     - data
   environment:
-    MYSQL_ROOT_PASSWORD: gzkPrcnyMYAta6VADAoYxM9KojGryF
+    MYSQL_ROOT_PASSWORD: fghfgh
