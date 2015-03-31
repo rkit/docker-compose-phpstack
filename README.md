@@ -1,4 +1,4 @@
-Docker Container for PHP development stack
+Docker: PHP Development Stack
 ========
 
 - Nginx
