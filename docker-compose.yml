@@ -1,0 +1,29 @@
+nginx:
+  build: ./docker/nginx
+  ports:
+    - "80:80"
+  links:
+    - mysql:mysql
+  volumes:
+    # configs
+    - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+    - ./php/php.ini:/etc/php5/fpm/conf.d/php.ini
+    # vhosts
+    - ./:/var/www/test
+    
+data:
+  image: busybox
+  volumes:
+    - /var/lib/mysql
+  command: true
+  
+mysql:
+  image: mysql:5.6
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+  volumes_from:
+    - data
+  environment:
+    MYSQL_ROOT_PASSWORD: gzkPrcnyMYAta6VADAoYxM9KojGryF

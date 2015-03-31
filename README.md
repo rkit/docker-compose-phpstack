@@ -1,54 +1,30 @@
-Docker Container for development
+Docker Container for PHP development stack
 ========
 
-#### Include:
-
-- nginx
-- php 5.5
-- php-fpm
-- php-redis
-- php-mongo
-- php-memcache
-- php-memcached
-- php-imagick
-- php-xhprof
-- php-xdebug
-- imagemagick
-- node & npm
-- composer
-- codeception
+- Nginx
+- PHP
+- MySQL
 
 ## Install
 
 1. Install [Docker](https://www.docker.com/) for Linux or [Boot2Docker](http://boot2docker.io/) for OS X & Windows
 
-2. Pull an image from registry to local machine
-   
+2. Get the source
    ```   
-   docker pull rkit/docker-nginx-php
+   git clone https://github.com/rkit/docker-phpstack-lnmp.git
+   cd docker-phpstack-lnmp
    ```
 
-3. Run from your working directory 
-
+3. Create and start containers
+   
    ```   
-   docker run --name app -d -p 80:80 -v `pwd`:/app rkit/docker-nginx-php
+   docker-compose -p app up
    ```
 
 4. Open [http://192.168.59.103](http://192.168.59.103) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
 
-## Run with MySQL
+## Setting up the environment
 
-```
-docker run --name mysql-data -v /var/lib/mysql busybox
-docker run --name mysql -d --volumes-from mysql-data -p 3306:3306 -e MYSQL_ROOT_PASSWORD=fghfgh mysql
-docker run --name app --link mysql:mysql -d -p 80:80 -v `pwd`:/app rkit/docker-nginx-php
-```
-
-## Using nginx with virtual hosts 
-
-```
-docker run --name app -d -p 80:80 \
-    -v `pwd`:/var/www/site \
-    -v ~/works/server/nginx/sites-enabled:/etc/nginx/sites-enabled \
-    rkit/docker-nginx-php
-```
+- Virtual hosts settings in **docker-compose.yml**
+- The required settings can be specified in the configuration files (see in **docker-compose.yml**)
+- Additional service (e.g. redis/mongo/etc) can be specified in **docker-compose.yml**

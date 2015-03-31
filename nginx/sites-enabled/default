@@ -1,8 +1,7 @@
 server {
     listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
-    server_name app;
-    root /app;
+    server_name test.dev;
+    root /var/www/test;
     index index.php;
      
     gzip on;
@@ -14,6 +13,8 @@ server {
             
     access_log off;
     error_log /var/log/nginx/error.log crit;
+    
+    client_max_body_size 64m;
 
     location / {
         try_files $uri $uri/ /index.php?$args;
