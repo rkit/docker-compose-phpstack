@@ -1,9 +1,9 @@
 Docker for PHP Development Stack
 ========
 
-- Nginx
-- PHP
-- MySQL
+- Nginx 1.9
+- PHP 5.5.25 (fpm)
+- MySQL 5.6
 
 ## Install
 
@@ -11,8 +11,8 @@ Docker for PHP Development Stack
 
 2. Get the source
    ```
-   git clone https://github.com/rkit/docker-phpstack-lnmp.git
-   cd docker-phpstack-lnmp
+   git clone https://github.com/rkit/docker-phpstack.git
+   cd docker-phpstack
    ```
 
 3. Create and start containers
