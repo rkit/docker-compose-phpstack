@@ -10,15 +10,15 @@ Docker for PHP Development Stack
 1. Install [Docker](https://www.docker.com/) for Linux or [Boot2Docker](http://boot2docker.io/) for OS X & Windows
 
 2. Get the source
-   ```   
+   ```
    git clone https://github.com/rkit/docker-phpstack-lnmp.git
    cd docker-phpstack-lnmp
    ```
 
 3. Create and start containers
-   
-   ```   
-   docker-compose -p app up
+
+   ```
+   docker-compose -p server up
    ```
 
 4. Open [http://192.168.59.103](http://192.168.59.103) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)

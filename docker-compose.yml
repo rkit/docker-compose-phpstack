@@ -1,22 +1,24 @@
-nginx:
-  build: ./docker/nginx
+phpfpm55:
+  build: ./docker/phpfpm55
   ports:
     - "80:80"
+    - "443:443"
   links:
     - mysql:mysql
   volumes:
     # configs
-    - ./nginx/sites-enabled:/etc/nginx/sites-enabled
-    - ./php/php.ini:/etc/php5/fpm/conf.d/php.ini
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
     # vhosts
-    - ./:/var/www/test
-    
+    - ./../test:/var/www/test
+
 data:
   image: busybox
   volumes:
     - /var/lib/mysql
   command: true
-  
+
 mysql:
   image: mysql:5.6
   ports:
