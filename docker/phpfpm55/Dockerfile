@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
     libpng12-dev \
     zlib1g-dev \
-    libicu-dev \
     libssl-dev \
     g++ \
     libmemcached-dev \
@@ -16,7 +15,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
-    docker-php-ext-install intl && \
     docker-php-ext-install opcache && \
     docker-php-ext-install zip && \
     docker-php-ext-install pdo_mysql && \
@@ -24,7 +22,6 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     docker-php-ext-install mbstring
 
 RUN pecl channel-update pecl.php.net && \
-    pecl install intl && \
     pecl install redis && \
     pecl install mongo && \
     pecl install memcache && \
@@ -35,6 +32,19 @@ RUN echo "extension=mongo.so" > /usr/local/etc/php/conf.d/ext-mongo.ini && \
     echo "extension=memcache.so" > /usr/local/etc/php/conf.d/ext-memcache.ini && \
     echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini
 
+# --- ICU --- #
+
+RUN apt-get install tzdata && \
+    wget http://download.icu-project.org/files/icu4c/55.1/icu4c-55_1-src.tgz -O icu4c-55_1-src.tgz && \
+    tar -zxvf icu4c-55_1-src.tgz && \
+    mkdir -p build && \
+    cd build && \
+    CPPFLAGS="-DU_CHARSET_IS_UTF8=1" ../icu/source/runConfigureICU Linux && \
+    make install && \
+    apt-get install -y libicu-dev && \
+    pecl install intl && \
+    echo "extension=intl.so" > /usr/local/etc/php/conf.d/ext-intl.ini
+
 # --- NGINX --- #
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
@@ -42,7 +52,7 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 
 RUN apt-get update && apt-get install -y \
     ca-certificates \
-    nginx=1.9.0-1~jessie \
+    nginx=1.9.3-1~jessie \
     supervisor && \
     rm -rf /var/lib/apt/lists/*
 
