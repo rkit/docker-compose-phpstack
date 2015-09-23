@@ -52,7 +52,7 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 
 RUN apt-get update && apt-get install -y \
     ca-certificates \
-    nginx=1.9.3-1~jessie \
+    nginx=1.9.5-1~jessie \
     supervisor && \
     rm -rf /var/lib/apt/lists/*
 
