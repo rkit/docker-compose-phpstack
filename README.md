@@ -2,7 +2,7 @@ Docker for PHP Development Stack
 ========
 
 - Nginx 1.9
-- PHP 5.5.25 (fpm)
+- PHP 5.5.25 (fpm, redis, mongo, gd, imagick, xdebug, memcache, memcached, icu, opcache)
 - MySQL 5.6
 
 ## Install
