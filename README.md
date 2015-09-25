@@ -7,7 +7,7 @@ Docker for PHP Development Stack
 
 ## Install
 
-1. Install [Docker](https://www.docker.com/) for Linux or [Boot2Docker](http://boot2docker.io/) for OS X & Windows
+1. Install [Docker](https://www.docker.com/) for Linux or [Docker Toolbox](https://www.docker.com/toolbox/) for OS X & Windows
 
 2. Get the source
    ```
@@ -21,7 +21,7 @@ Docker for PHP Development Stack
    docker-compose -p server up
    ```
 
-4. Open [http://192.168.59.103](http://192.168.59.103) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
+4. Open [http://192.168.99.100](http://192.168.99.100) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
 
 ## Setting up the environment
 
