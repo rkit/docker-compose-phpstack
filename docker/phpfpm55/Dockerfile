@@ -1,6 +1,6 @@
 FROM php:5.5.25-fpm
 
-# --- PHP --- #
+# --- SOFT --- #
 
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
@@ -13,12 +13,13 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     imagemagick \
     libmagickwand-6.q16-dev --no-install-recommends \
-    ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
     wget \
     git \
     ruby \
     nodejs \
     npm
+
+RUN ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
