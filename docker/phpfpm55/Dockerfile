@@ -14,7 +14,11 @@ RUN apt-get update && apt-get install -y \
     imagemagick \
     libmagickwand-6.q16-dev --no-install-recommends \
     ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
-    wget
+    wget \
+    git \
+    ruby \
+    nodejs \
+    npm
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
@@ -38,6 +42,11 @@ RUN echo "extension=mongo.so" > /usr/local/etc/php/conf.d/ext-mongo.ini && \
     echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini && \
     echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini && \
     echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/ext-xdebug.ini
+
+# --- COMPOSER --- #
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 
 # --- ICU --- #
 

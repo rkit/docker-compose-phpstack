@@ -4,6 +4,10 @@ Docker for PHP Development Stack
 - Nginx 1.9
 - PHP 5.5.25 (fpm)
 - MySQL 5.6
+- Ruby
+- Git
+- Nodejs (npm)
+- Composer
 
 ## Install
 
