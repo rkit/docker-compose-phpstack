@@ -1,5 +1,5 @@
 phpfpm55:
-  build: ./docker/phpfpm55
+  build: ./docker/phpstack-5.5
   ports:
     - "80:80"
     - "443:443"
