@@ -3,7 +3,8 @@
 ## Soft
 
 - Nginx 1.9
-- PHP 5.5.25 (fpm, redis, mongo, gd, imagick, xdebug, memcache, memcached, icu-55.1, opcache)
+- PHP 5.5.25  
+  * fpm, redis, mongo, gd, imagick, xdebug, memcache, memcached, icu (55.1), opcache
 - MySQL 5.6
 - Ruby
 - Git
