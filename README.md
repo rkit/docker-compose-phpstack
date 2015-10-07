@@ -17,8 +17,8 @@
 
 2. Get the source
    ```
-   git clone https://github.com/rkit/docker-phpstack.git
-   cd docker-phpstack
+   git clone https://github.com/rkit/docker-compose-phpstack.git
+   cd docker-compose-phpstack
    ```
 
 3. Create and start containers
