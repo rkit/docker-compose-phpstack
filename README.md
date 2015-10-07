@@ -8,7 +8,7 @@
 - MySQL 5.6
 - Ruby
 - Git
-- Nodejs (npm)
+- Nodejs + NPM
 - Composer
 
 ## Install
