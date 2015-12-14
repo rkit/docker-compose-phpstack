@@ -21,7 +21,7 @@
    cd docker-compose-phpstack
    ```
 
-3. Create and start containers
+3. Start services
 
    ```
    docker-compose start
