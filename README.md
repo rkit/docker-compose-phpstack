@@ -24,7 +24,7 @@
 3. Create and start containers
 
    ```
-   docker-compose -p server up
+   docker-compose start
    ```
 
 4. Open [http://192.168.99.100](http://192.168.99.100) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
