@@ -3,6 +3,7 @@ FROM php:5.5.25-fpm
 # --- SOFT --- #
 
 RUN apt-get update && apt-get install -y \
+    openssh-client \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
