@@ -21,10 +21,10 @@
    cd docker-compose-phpstack
    ```
 
-3. Start services
+3. Create and start containers
 
    ```
-   docker-compose start
+   docker-compose up
    ```
 
 4. Open [http://192.168.99.100](http://192.168.99.100) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
