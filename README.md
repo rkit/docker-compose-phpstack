@@ -29,8 +29,3 @@
 
 4. Open [http://192.168.99.100](http://192.168.99.100) (OS X, Windows) or [http://127.0.0.1](http://127.0.0.1) (Linux)
 
-## Setting up the environment
-
-- Virtual hosts settings in **docker-compose.yml**
-- The required settings can be specified in the configuration files (see in **docker-compose.yml**)
-- Additional service (e.g. redis/mongo/etc) can be specified in **docker-compose.yml**
