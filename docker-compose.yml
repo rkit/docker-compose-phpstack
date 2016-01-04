@@ -1,23 +1,20 @@
-phpstack:
-  build: ./docker/phpstack-5.5
-  ports:
-    - "80:80"
-    - "443:443"
+php:
+  image: rkit/docker-phpstack:5.5
+  expose:
+    - "9000:9000"
   links:
     - mysql:mysql
-  volumes:
-    # configs
-    - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-    - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-    # vhosts
-    - ./../test:/var/www/test
+  volumes_from:
+    - data
 
-data:
-  image: busybox
-  volumes:
-    - /var/lib/mysql
-  command: /bin/true
+nginx:
+  image: nginx:1.9.9
+  ports:
+    - "80:80"
+  links:
+    - php
+  volumes_from:
+    - data
 
 mysql:
   image: mysql:5.6
@@ -29,3 +26,16 @@ mysql:
     - data
   environment:
     MYSQL_ROOT_PASSWORD: fghfgh
+
+data:
+  image: busybox
+  volumes:
+    # data
+    - /var/lib/mysql
+    # configs
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+    # virtual hosts
+    - ./site:/var/www/test
+  command: /bin/true
