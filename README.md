@@ -3,7 +3,7 @@
 ## Soft
 
 - PHP 5.5  
-  fpm, redis, mongo, gd, imagick, xdebug, memcache, memcached, icu (55.1), opcache
+  - fpm, redis, mongo, gd, imagick, xdebug, memcache, memcached, icu (55.1), opcache
 - Nginx 1.9
 - MySQL 5.6
 - Ruby
