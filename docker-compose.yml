@@ -1,41 +1,39 @@
-php:
-  image: rkit/docker-phpstack:5.5
-  expose:
-    - "9000:9000"
-  links:
-    - mysql:mysql
-  volumes_from:
-    - data
 
-nginx:
-  image: nginx:1.9.9
-  ports:
-    - "80:80"
-  links:
-    - php
-  volumes_from:
-    - data
+version: '2'
 
-mysql:
-  image: mysql:5.6
-  ports:
-    - "3306:3306"
-  volumes:
-    - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-  volumes_from:
-    - data
-  environment:
-    MYSQL_ROOT_PASSWORD: fghfgh
+services:
+  php:
+    image: rkit/docker-phpstack:5.5
+    expose:
+      - 9000
+    links:
+      - mysql:mysql
+    volumes:
+      - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./site:/var/www/test
 
-data:
-  image: busybox
-  volumes:
-    # data
-    - /var/lib/mysql
-    # configs
-    - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-    - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-    # virtual hosts
-    - ./site:/var/www/test
-  command: /bin/true
+  nginx:
+    image: nginx:1.9.9
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./site:/var/www/test
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - data-mysql-5.7:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: fghfgh
+
+volumes:
+  data-mysql-5.7:
+    driver: local
