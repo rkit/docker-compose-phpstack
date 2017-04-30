@@ -2,7 +2,7 @@ version: '2'
 
 services:
   php:
-    image: rkit/docker-phpstack:5.5
+    image: rkit/docker-phpstack:7.1
     expose:
       - 9000
     links:
@@ -10,7 +10,7 @@ services:
     volumes:
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./site:/var/www/test
+      - ./site:/var/www/site
 
   nginx:
     image: nginx:1.9.9
@@ -20,7 +20,7 @@ services:
       - php
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./site:/var/www/test
+      - ./site:/var/www/site
 
   mysql:
     image: mysql:5.7
