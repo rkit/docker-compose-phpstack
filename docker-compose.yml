@@ -10,7 +10,7 @@ services:
     volumes:
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./site:/var/www/site
+      - ./site:/var/www/html
 
   nginx:
     image: nginx:1.9.9
@@ -20,7 +20,7 @@ services:
       - php
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./site:/var/www/site
+      - ./site:/var/www/html
 
   mysql:
     image: mysql:5.7
